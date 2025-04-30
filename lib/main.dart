@@ -14,6 +14,7 @@ void main() async {
 
   runApp(const MyApp());
 }
+// add doctor  rating future
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
