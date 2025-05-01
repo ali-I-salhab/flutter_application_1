@@ -1,4 +1,4 @@
-name: Test Production Trigger
+name: Build and Deploy to Firebase
 
 on:
   push:
@@ -6,9 +6,34 @@ on:
       - production
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say Hello
-        run: echo "✅ Workflow triggered on production branch push!"
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.29.3"
+
+      - name: Flutter Pub Get
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.3'
+
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      - name: Distribute to Firebase
+        working-directory: android
+        run: fastlane deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
