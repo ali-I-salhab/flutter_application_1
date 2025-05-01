@@ -21,7 +21,7 @@ void main() async {
 // bug fix in production branch
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+// changes to test fastlane
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

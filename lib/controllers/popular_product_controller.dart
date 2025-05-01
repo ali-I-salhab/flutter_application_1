@@ -15,9 +15,10 @@ class PopularProductController extends GetxController {
   int get inCartItems => _inCartItems + quantity;
   // init late
   late CartController _cartController;
-  Map<int,CartModel> _items={};
+ final  Map<int,CartModel> _items={};
    Map<int,CartModel> get items =>_items;
-  // we use this variable inside details page for increase decrease product quantity
+  // we use this variable inside details page for inc
+  //rease decrease product quantity
 
   int quantity = 0;
   int _inCartItems = 0;
