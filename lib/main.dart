@@ -20,7 +20,7 @@ void main() async {
 // bug fix in production branch
 // bug fix in production branch
 // add doctor  rating future
-
+// add new auth feature
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
